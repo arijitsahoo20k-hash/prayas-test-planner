@@ -107,7 +107,7 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
                         <span
                           key={t.id}
                           className="tp-cal-dot"
-                          style={{ background: t.track === "advanced" ? "var(--p1-a)" : "var(--p2-c)" }}
+                          style={{ background: t.track === "advanced" ? "var(--p1-b)" : "var(--p2-b)" }}
                         />
                       ))}
                     </span>
@@ -119,10 +119,10 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
 
           <div className="tp-cal-legend">
             <span className="tp-cal-legend-item">
-              <span className="tp-cal-dot" style={{ background: "var(--p2-c)" }} /> Main
+              <span className="tp-cal-dot" style={{ background: "var(--p2-b)" }} /> Main
             </span>
             <span className="tp-cal-legend-item">
-              <span className="tp-cal-dot" style={{ background: "var(--p1-a)" }} /> Advanced
+              <span className="tp-cal-dot" style={{ background: "var(--p1-b)" }} /> Advanced
             </span>
             <span className="tp-cal-legend-item">
               <span style={{ width: 9, height: 9, borderRadius: 999, boxShadow: "0 0 0 1.5px var(--gold) inset", display: "inline-block" }} /> Full test
