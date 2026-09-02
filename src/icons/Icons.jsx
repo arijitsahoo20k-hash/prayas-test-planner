@@ -3,7 +3,7 @@ import React from "react";
 const base = {
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.8,
+  strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round"
 };
