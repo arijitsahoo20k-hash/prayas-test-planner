@@ -102,11 +102,11 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
                 >
                   <span className="tp-cal-daynum">{d}</span>
                   {visible.length > 0 && (
-                    <span className="tp-cal-dots" style={{ display: "flex", gap: 2 }}>
+                    <span className="tp-cal-dots" style={{ display: "flex", gap: 4 }}>
                       {visible.slice(0, 3).map((t) => (
                         <span
                           key={t.id}
-                          className="tp-cal-dot"
+                          className={`tp-cal-dot${t.type === "full" ? " is-full" : ""}`}
                           style={{ background: t.track === "advanced" ? "var(--p1-b)" : "var(--p2-b)" }}
                         />
                       ))}
@@ -125,7 +125,7 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
               <span className="tp-cal-dot" style={{ background: "var(--p1-b)" }} /> Advanced
             </span>
             <span className="tp-cal-legend-item">
-              <span style={{ width: 9, height: 9, borderRadius: 999, boxShadow: "0 0 0 1.5px var(--gold) inset", display: "inline-block" }} /> Full test
+              <span className="tp-cal-dot is-full" style={{ background: "var(--muted-dim)" }} /> Full test
             </span>
           </div>
         </div>
