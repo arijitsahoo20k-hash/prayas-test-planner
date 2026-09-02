@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, Sparkle } from "../icons/Icons.jsx";
+import { Calendar, Sparkle, Star, Heart } from "../icons/Icons.jsx";
 import { BATCH_1, TESTS_1, BATCH_2, TESTS_2 } from "../data/testPlanner.js";
 import { todayKey } from "../utils/date.js";
 
@@ -49,6 +49,12 @@ export default function BatchSelector({ onSelect }) {
     <div className="bs-screen">
       <div className="glow-mesh" />
       <div className="grain" />
+      <div className="decor-layer">
+        <span className="decor" style={{ top: "14%", left: "8%", color: "var(--p1-a)" }}><Sparkle size={20} /></span>
+        <span className="decor" style={{ top: "22%", right: "10%", animationDelay: "1.2s", color: "var(--gold)" }}><Star size={16} /></span>
+        <span className="decor" style={{ top: "72%", right: "8%", animationDelay: "0.6s", color: "var(--p2-a)" }}><Sparkle size={16} /></span>
+        <span className="decor" style={{ top: "78%", left: "10%", animationDelay: "2s", color: "var(--phy)" }}><Heart size={16} /></span>
+      </div>
       <div className="bs-header" style={{ position: "relative", zIndex: 2 }}>
         <div className="bs-logo">
           <Sparkle size={26} />

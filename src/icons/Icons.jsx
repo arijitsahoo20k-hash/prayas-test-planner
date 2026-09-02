@@ -57,6 +57,12 @@ export const Star = ({ size = 14, ...p }) => (
   </svg>
 );
 
+export const Heart = ({ size = 14, ...p }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" {...p}>
+    <path d="M12 20.5c-.3 0-.6-.1-.8-.3-2.1-1.9-4-3.6-5.4-5.2C4 13 3 11.3 3 9.4 3 6.7 5.1 4.6 7.7 4.6c1.5 0 2.9.7 3.8 1.9.3.4.9.4 1.2 0 .9-1.2 2.3-1.9 3.8-1.9 2.6 0 4.7 2.1 4.7 4.8 0 1.9-1 3.6-2.8 5.6-1.4 1.6-3.3 3.3-5.4 5.2-.2.2-.5.3-.8.3Z" />
+  </svg>
+);
+
 export const Clock = ({ size = 14, ...p }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...base} {...p}>
     <circle cx="12" cy="12" r="9" />

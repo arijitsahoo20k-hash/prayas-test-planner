@@ -6,7 +6,7 @@ import TestCalendar from "./components/TestCalendar.jsx";
 import UpcomingList from "./components/UpcomingList.jsx";
 import InstallPrompt from "./components/InstallPrompt.jsx";
 import BatchSelector from "./components/BatchSelector.jsx";
-import { Sparkle } from "./icons/Icons.jsx";
+import { Sparkle, Star, Heart } from "./icons/Icons.jsx";
 import { BATCH_1, TESTS_1, BATCH_2, TESTS_2 } from "./data/testPlanner.js";
 import { todayKey, cursorFromKey } from "./utils/date.js";
 
@@ -115,6 +115,12 @@ export default function App() {
     <>
       <div className="glow-mesh" />
       <div className="grain" />
+      <div className="decor-layer">
+        <span className="decor" style={{ top: "10%", left: "4%" }}><Sparkle size={18} /></span>
+        <span className="decor" style={{ top: "20%", right: "7%", animationDelay: "1.4s" }}><Star size={15} /></span>
+        <span className="decor" style={{ top: "66%", right: "4%", animationDelay: "0.7s" }}><Sparkle size={14} /></span>
+        <span className="decor" style={{ top: "82%", left: "6%", animationDelay: "2.1s" }}><Heart size={14} /></span>
+      </div>
 
       <TopBar
         batchName={BATCH_META.name}
