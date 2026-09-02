@@ -8,21 +8,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&family=Caveat:wght@600;700&display=swap');
 
 :root {
-  --bg: #0d0d0d;
-  --bg2: #121110;
-  --card: #1a1a1a;
-  --card-hi: #201f1e;
-  --card-hi2: #262524;
-  --border: rgba(255,255,255,0.08);
-  --border-hi: rgba(255,255,255,0.14);
+  --bg: #242226;
+  --bg2: #2a272c;
+  --card: #322e34;
+  --card-hi: #3a353c;
+  --card-hi2: #423d45;
+  --border: rgba(255,255,255,0.10);
+  --border-hi: rgba(255,255,255,0.17);
   --ink: #f1ece3;
-  --muted: #a79f92;
-  --muted-dim: #746c60;
+  --muted: #b3aa9e;
+  --muted-dim: #85796d;
 
   /* sticker outline + paper-dot texture */
   --outline: #f2e6cf;
   --outline-soft: rgba(242,230,207,0.35);
-  --dot: rgba(255,255,255,0.05);
+  --dot: rgba(255,255,255,0.06);
 
   /* Prayas 1.0 palette — Sky Whisper */
   --p1-a: #93c5fd;
