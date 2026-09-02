@@ -119,10 +119,22 @@ html[data-batch="prayas2"] .glow-mesh {
 
 /* ─── floating decor sprinkles ─── */
 .decor-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-.decor { position: absolute; opacity: .5; animation: tp-bob 7s ease-in-out infinite; color: var(--accent, var(--gold)); filter: drop-shadow(0 0 6px rgba(0,0,0,0.4)); }
+.decor {
+  position: absolute; opacity: .5; animation: tp-bob 7s ease-in-out infinite;
+  color: var(--accent, var(--gold));
+  /* was: filter: drop-shadow(...) — animated element + filter forces a costly
+     per-frame raster on the GPU. Dropped; text-shadow is compositor-cheap. */
+  text-shadow: 0 0 6px rgba(0,0,0,0.4);
+  will-change: transform;
+}
 @keyframes tp-bob { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(8deg); } }
 .grain {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .025; mix-blend-mode: overlay;
+  /* was: position:fixed + mix-blend-mode:overlay + live feTurbulence filter.
+     A full-viewport blend layer sitting under animating elements forces the
+     browser to re-blend the whole screen every frame — this was the main
+     80%-GPU culprit. Static noise, no blend mode, so it paints once and
+     never touches the compositor again. */
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .02;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
