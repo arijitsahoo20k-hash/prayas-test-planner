@@ -8,21 +8,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&family=Caveat:wght@600;700&display=swap');
 
 :root {
-  --bg: #242226;
-  --bg2: #2a272c;
-  --card: #322e34;
-  --card-hi: #3a353c;
-  --card-hi2: #423d45;
-  --border: rgba(255,255,255,0.10);
-  --border-hi: rgba(255,255,255,0.17);
+  --bg: #2b2620;
+  --bg2: #332d26;
+  --card: #3c342c;
+  --card-hi: #463d33;
+  --card-hi2: #50453a;
+  --border: rgba(242,230,207,0.10);
+  --border-hi: rgba(242,230,207,0.18);
   --ink: #f1ece3;
-  --muted: #b3aa9e;
-  --muted-dim: #85796d;
+  --muted: #b8ac9c;
+  --muted-dim: #8c7d6a;
 
   /* sticker outline + paper-dot texture */
   --outline: #f2e6cf;
   --outline-soft: rgba(242,230,207,0.35);
-  --dot: rgba(255,255,255,0.06);
+  --dot: rgba(242,230,207,0.05);
 
   /* Prayas 1.0 palette — Sky Whisper */
   --p1-a: #93c5fd;
@@ -251,7 +251,7 @@ html[data-batch="prayas2"] .tp-brand-mark { background: linear-gradient(135deg, 
   display: flex; align-items: center; gap: 5px;
   transition: background 0.15s ease;
 }
-.tp-switch-batch:hover { background: rgba(255,255,255,0.06); }
+.tp-switch-batch:hover { background: rgba(242,230,207,0.06); }
 
 /* ══════════════════════════════════════════════════════════
    HERO
