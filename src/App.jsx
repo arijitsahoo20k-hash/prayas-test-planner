@@ -114,12 +114,11 @@ export default function App() {
   return (
     <>
       <div className="glow-mesh" />
-      <div className="grain" />
       <div className="decor-layer">
         <span className="decor" style={{ top: "10%", left: "4%" }}><Sparkle size={18} /></span>
-        <span className="decor" style={{ top: "20%", right: "7%", animationDelay: "1.4s" }}><Star size={15} /></span>
-        <span className="decor" style={{ top: "66%", right: "4%", animationDelay: "0.7s" }}><Sparkle size={14} /></span>
-        <span className="decor" style={{ top: "82%", left: "6%", animationDelay: "2.1s" }}><Heart size={14} /></span>
+        <span className="decor" style={{ top: "20%", right: "7%" }}><Star size={15} /></span>
+        <span className="decor" style={{ top: "66%", right: "4%" }}><Sparkle size={14} /></span>
+        <span className="decor" style={{ top: "82%", left: "6%" }}><Heart size={14} /></span>
       </div>
 
       <TopBar
