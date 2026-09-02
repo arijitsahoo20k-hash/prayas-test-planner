@@ -1,7 +1,6 @@
 import React from "react";
 import { Sparkle, Flask, Atom, Sigma, Clock } from "../icons/Icons.jsx";
 import { formatLong, countdownLabel, todayKey } from "../utils/date.js";
-import { BATCH_TAGLINE } from "../data/testPlanner.js";
 
 function TrackBadge({ test }) {
   return (
@@ -12,7 +11,7 @@ function TrackBadge({ test }) {
   );
 }
 
-export default function Hero({ tests, onSelectTest }) {
+export default function Hero({ tests, batchTagline, onSelectTest }) {
   const today = todayKey();
   const next = tests.find((t) => t.date >= today) || tests[tests.length - 1];
 
@@ -25,24 +24,24 @@ export default function Hero({ tests, onSelectTest }) {
     <div className="wrap">
       <section className="tp-hero">
         <div className="tp-hero-badge">
-          <Sparkle size={13} /> {BATCH_TAGLINE}
+          <Sparkle size={13} /> {batchTagline}
         </div>
-        <h1>Every test, <span className="accent">on the calendar</span></h1>
+        <h1>Every test, <span className="accent">mapped.</span></h1>
         <p className="lead">
-          All 29 Prayas 2.0 tests — Main, Advanced, part tests and full-syllabus AITS — mapped to their exact dates, with the syllabus for each one right where you need it.
+          {total} tests — Main, Advanced, part tests and full-syllabus AITS — exact dates, full syllabus, one tap away.
         </p>
 
         <div className="tp-stats">
           <div className="tp-stat">
             <div className="tp-stat-num">{total}</div>
-            <div className="tp-stat-label">Total tests</div>
+            <div className="tp-stat-label">Total</div>
           </div>
           <div className="tp-stat">
-            <div className="tp-stat-num coral">{done}</div>
+            <div className="tp-stat-num accent">{done}</div>
             <div className="tp-stat-label">Done</div>
           </div>
           <div className="tp-stat">
-            <div className="tp-stat-num violet">{upcoming}</div>
+            <div className="tp-stat-num phy">{upcoming}</div>
             <div className="tp-stat-label">Upcoming</div>
           </div>
           <div className="tp-stat">

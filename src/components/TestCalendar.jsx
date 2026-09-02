@@ -60,9 +60,13 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
       <div className="tp-cal-left">
         <div className="tp-cal-card">
           <div className="tp-cal-head">
-            <button type="button" className="tp-cal-nav" onClick={() => changeMonth(-1)} aria-label="Previous month"><ChevronLeft size={16} /></button>
+            <button type="button" className="tp-cal-nav" onClick={() => changeMonth(-1)} aria-label="Previous month">
+              <ChevronLeft size={16} />
+            </button>
             <div className="tp-cal-title">{label}</div>
-            <button type="button" className="tp-cal-nav" onClick={() => changeMonth(1)} aria-label="Next month"><ChevronRight size={16} /></button>
+            <button type="button" className="tp-cal-nav" onClick={() => changeMonth(1)} aria-label="Next month">
+              <ChevronRight size={16} />
+            </button>
             <button type="button" className="tp-cal-today" onClick={goToday}>Today</button>
           </div>
 
@@ -80,7 +84,7 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
               const isSel = key === selectedKey;
               const hasFull = visible.some((t) => t.type === "full");
               const dimmed = list.length > 0 && visible.length === 0;
-              const primaryTrack = visible[0]?.track;
+              const primaryTrack = visible[0]?.track || "main";
 
               return (
                 <button
@@ -91,7 +95,7 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
                     list.length ? "has-test" : "",
                     hasFull ? "type-full" : "",
                     isToday ? "is-today" : "",
-                    isSel ? `is-selected${primaryTrack === "advanced" ? " track-advanced" : ""}` : "",
+                    isSel ? `is-selected track-${primaryTrack}` : "",
                     dimmed ? "dim" : ""
                   ].filter(Boolean).join(" ")}
                   onClick={() => setSelectedKey(key)}
@@ -103,7 +107,7 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
                         <span
                           key={t.id}
                           className="tp-cal-dot"
-                          style={{ background: t.track === "advanced" ? "var(--violet)" : "var(--coral)" }}
+                          style={{ background: t.track === "advanced" ? "var(--p1-a)" : "var(--p2-c)" }}
                         />
                       ))}
                     </span>
@@ -114,9 +118,15 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
           </div>
 
           <div className="tp-cal-legend">
-            <span className="tp-cal-legend-item"><span className="tp-cal-dot" style={{ background: "var(--coral)" }} /> Main</span>
-            <span className="tp-cal-legend-item"><span className="tp-cal-dot" style={{ background: "var(--violet)" }} /> Advanced</span>
-            <span className="tp-cal-legend-item"><span style={{ width: 9, height: 9, borderRadius: 999, boxShadow: "0 0 0 1.5px var(--gold) inset", display: "inline-block" }} /> Full test</span>
+            <span className="tp-cal-legend-item">
+              <span className="tp-cal-dot" style={{ background: "var(--p2-c)" }} /> Main
+            </span>
+            <span className="tp-cal-legend-item">
+              <span className="tp-cal-dot" style={{ background: "var(--p1-a)" }} /> Advanced
+            </span>
+            <span className="tp-cal-legend-item">
+              <span style={{ width: 9, height: 9, borderRadius: 999, boxShadow: "0 0 0 1.5px var(--gold) inset", display: "inline-block" }} /> Full test
+            </span>
           </div>
         </div>
 
@@ -132,12 +142,12 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
       <div className="tp-detail">
         {!primaryTest ? (
           <div className="tp-detail-empty">
-            <Calendar size={26} />
+            <Calendar size={28} />
             {selectedKey ? "No test scheduled on this day." : "Pick a date to see what's scheduled."}
           </div>
         ) : (
           dayTests.filter((t) => matchesFilter(t, filter)).map((test) => (
-            <div key={test.id} style={{ marginBottom: 18 }}>
+            <div key={test.id} style={{ marginBottom: 20 }}>
               <div className="tp-detail-head">
                 <div>
                   <div className="tp-detail-date">{selLabel}</div>
@@ -146,26 +156,36 @@ export default function TestCalendar({ tests, cursor, setCursor, selectedKey, se
                 <span className="tp-detail-countdown">{countdownLabel(test.date, today)}</span>
               </div>
               <div className="tp-detail-badges">
-                <span className={`tp-badge track-${test.track}`}>{test.track === "advanced" ? "JEE Advanced" : "JEE Main"} pattern</span>
+                <span className={`tp-badge track-${test.track}`}>
+                  {test.track === "advanced" ? "JEE Advanced" : "JEE Main"} pattern
+                </span>
                 <span className={`tp-badge type-${test.type}`}>{test.type === "full" ? "Full test" : "Part test"}</span>
                 {test.cumulative && <span className="tp-badge type-part">+30% cumulative</span>}
               </div>
 
               {test.fullSyllabus ? (
-                <div className="tp-full-note">📘 Full syllabus test — as per NTA {test.track === "advanced" ? "JEE Advanced" : "JEE Main"} pattern.</div>
+                <div className="tp-full-note">
+                  📘 Full syllabus test — as per NTA {test.track === "advanced" ? "JEE Advanced" : "JEE Main"} pattern.
+                </div>
               ) : (
                 <>
                   <div className="tp-subject physics">
-                    <div className="tp-subject-title"><Atom size={13} /> Physics</div>
-                    <div className="tp-chips">{test.subjects.physics.map((c) => <span key={c} className="tp-chip">{c}</span>)}</div>
+                    <div className="tp-subject-title"><Atom size={15} /> Physics</div>
+                    <div className="tp-chips">
+                      {test.subjects.physics.map((c) => <span key={c} className="tp-chip">{c}</span>)}
+                    </div>
                   </div>
                   <div className="tp-subject chemistry">
-                    <div className="tp-subject-title"><Flask size={13} /> Chemistry</div>
-                    <div className="tp-chips">{test.subjects.chemistry.map((c) => <span key={c} className="tp-chip">{c}</span>)}</div>
+                    <div className="tp-subject-title"><Flask size={15} /> Chemistry</div>
+                    <div className="tp-chips">
+                      {test.subjects.chemistry.map((c) => <span key={c} className="tp-chip">{c}</span>)}
+                    </div>
                   </div>
                   <div className="tp-subject maths">
-                    <div className="tp-subject-title"><Sigma size={13} /> Maths</div>
-                    <div className="tp-chips">{test.subjects.maths.map((c) => <span key={c} className="tp-chip">{c}</span>)}</div>
+                    <div className="tp-subject-title"><Sigma size={15} /> Maths</div>
+                    <div className="tp-chips">
+                      {test.subjects.maths.map((c) => <span key={c} className="tp-chip">{c}</span>)}
+                    </div>
                   </div>
                 </>
               )}

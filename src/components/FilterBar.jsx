@@ -3,8 +3,8 @@ import { Layers } from "../icons/Icons.jsx";
 
 const OPTIONS = [
   { key: "all", label: "All tests" },
-  { key: "main", label: "Main", color: "var(--coral)" },
-  { key: "advanced", label: "Advanced", color: "var(--violet)" },
+  { key: "main", label: "Main", color: "var(--p2-c)" },
+  { key: "advanced", label: "Advanced", color: "var(--p1-a)" },
   { key: "full", label: "Full test", color: "var(--gold)" }
 ];
 

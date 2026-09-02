@@ -5,17 +5,56 @@ import FilterBar from "./components/FilterBar.jsx";
 import TestCalendar from "./components/TestCalendar.jsx";
 import UpcomingList from "./components/UpcomingList.jsx";
 import InstallPrompt from "./components/InstallPrompt.jsx";
+import BatchSelector from "./components/BatchSelector.jsx";
 import { Sparkle } from "./icons/Icons.jsx";
-import { TESTS } from "./data/testPlanner.js";
+import { BATCH_1, TESTS_1, BATCH_2, TESTS_2 } from "./data/testPlanner.js";
 import { todayKey, cursorFromKey } from "./utils/date.js";
 
+const BATCH_MAP = {
+  prayas1: { meta: BATCH_1, tests: TESTS_1 },
+  prayas2: { meta: BATCH_2, tests: TESTS_2 },
+};
+
+const LS_KEY = "tp-batch";
+
 export default function App() {
+  // ── batch state — persisted in localStorage ──
+  const [batchId, setBatchId] = useState(() => {
+    return localStorage.getItem(LS_KEY) || null;
+  });
+
+  const batch = batchId ? BATCH_MAP[batchId] : null;
+  const TESTS = batch ? batch.tests : [];
+  const BATCH_META = batch ? batch.meta : null;
+
+  // Apply batch accent to <html> data attribute
+  useEffect(() => {
+    if (batchId) {
+      document.documentElement.setAttribute("data-batch", batchId);
+    } else {
+      document.documentElement.removeAttribute("data-batch");
+    }
+  }, [batchId]);
+
   const today = todayKey();
-  const nextTest = useMemo(() => TESTS.find((t) => t.date >= today) || TESTS[TESTS.length - 1], [today]);
+  const nextTest = useMemo(
+    () => TESTS.find((t) => t.date >= today) || TESTS[TESTS.length - 1],
+    [TESTS, today]
+  );
 
   const [filter, setFilter] = useState("all");
-  const [cursor, setCursor] = useState(() => cursorFromKey(nextTest.date));
-  const [selectedKey, setSelectedKey] = useState(nextTest.date);
+  const [cursor, setCursor] = useState(() =>
+    nextTest ? cursorFromKey(nextTest.date) : cursorFromKey(today)
+  );
+  const [selectedKey, setSelectedKey] = useState(nextTest?.date || today);
+
+  // Update cursor/selected when batch changes
+  useEffect(() => {
+    if (nextTest) {
+      setCursor(cursorFromKey(nextTest.date));
+      setSelectedKey(nextTest.date);
+    }
+  }, [batchId]);
 
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showInstall, setShowInstall] = useState(false);
@@ -47,7 +86,7 @@ export default function App() {
     if (filter === "all") return TESTS;
     if (filter === "full") return TESTS.filter((t) => t.type === "full");
     return TESTS.filter((t) => t.track === filter);
-  }, [filter]);
+  }, [filter, TESTS]);
 
   const selectTest = (test) => {
     setCursor(cursorFromKey(test.date));
@@ -56,13 +95,35 @@ export default function App() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const handleSelectBatch = (id) => {
+    localStorage.setItem(LS_KEY, id);
+    setBatchId(id);
+    setFilter("all");
+  };
+
+  const handleSwitchBatch = () => {
+    setBatchId(null);
+    localStorage.removeItem(LS_KEY);
+  };
+
+  // Show batch selector if no batch chosen
+  if (!batchId) {
+    return <BatchSelector onSelect={handleSelectBatch} />;
+  }
+
   return (
     <>
       <div className="glow-mesh" />
       <div className="grain" />
 
-      <TopBar onInstallClick={handleInstall} canInstall={!!deferredPrompt} />
-      <Hero tests={TESTS} onSelectTest={selectTest} />
+      <TopBar
+        batchName={BATCH_META.name}
+        onInstallClick={handleInstall}
+        canInstall={!!deferredPrompt}
+        onSwitchBatch={handleSwitchBatch}
+      />
+
+      <Hero tests={TESTS} batchTagline={BATCH_META.tagline} onSelectTest={selectTest} />
 
       <div className="wrap" id="tp-calendar-anchor">
         <section>
@@ -96,7 +157,7 @@ export default function App() {
       </div>
 
       <footer>
-        <Sparkle size={12} /> Built for the Prayas 2.0 batch · every date, every chapter, one tap away
+        <Sparkle size={12} /> Built for {BATCH_META.name} · every date, every chapter, one tap away
       </footer>
 
       <InstallPrompt visible={showInstall} onInstall={handleInstall} onDismiss={handleDismiss} />
