@@ -30,11 +30,11 @@
   --p1-c: #cbe3ff;
   --p1-glow: rgba(147,197,253,0.16);
 
-  /* Prayas 2.0 palette — Butter Pop */
-  --p2-a: #c99a2e;
-  --p2-b: #a67c1f;
-  --p2-c: #fef3c2;
-  --p2-glow: rgba(253,230,138,0.16);
+  /* Prayas 2.0 palette — Teal Pop */
+  --p2-a: #1f8f80;
+  --p2-b: #146b60;
+  --p2-c: #bdeee5;
+  --p2-glow: rgba(31,143,128,0.16);
 
   /* Subject accent colors */
   --phy: #cf5a8a;
@@ -70,7 +70,7 @@ html[data-batch="prayas2"] {
   --accent-deep: var(--p2-b);
   --accent-light: var(--p2-c);
   --accent-glow: var(--p2-glow);
-  --accent-ink: #4a3a08;
+  --accent-ink: #0b332e;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -147,7 +147,7 @@ html[data-batch="prayas2"] .glow-mesh {
 }
 .bs-logo {
   width: 60px; height: 60px; border-radius: 20px; margin: 0 auto 16px;
-  background: linear-gradient(135deg, #93c5fd 0%, #fde68a 100%);
+  background: linear-gradient(135deg, #93c5fd 0%, #6fd9c8 100%);
   display: flex; align-items: center; justify-content: center;
   border: 3px solid var(--outline);
   box-shadow: 4px 4px 0 var(--outline);
@@ -186,7 +186,7 @@ html[data-batch="prayas2"] .glow-mesh {
   box-shadow: 3px 3px 0 var(--outline);
 }
 .bs-card-p1 .bs-card-orb { background: linear-gradient(135deg, #cbe3ff, #6a9de0); color: #0d2a4a; }
-.bs-card-p2 .bs-card-orb { background: linear-gradient(135deg, #fef3c2, #d9b95e); color: #4a3a08; }
+.bs-card-p2 .bs-card-orb { background: linear-gradient(135deg, #bdeee5, #1f8f80); color: #0b332e; }
 
 .bs-card-name { font-family: var(--font-display); font-weight: 800; font-size: 22px; }
 .bs-card-p1 .bs-card-name { color: var(--p1-a); }
@@ -224,7 +224,7 @@ html[data-batch="prayas2"] .glow-mesh {
   transform: rotate(-3deg);
 }
 html[data-batch="prayas1"] .tp-brand-mark { background: linear-gradient(135deg, var(--p1-c), var(--p1-a)); color: #0d2a4a; }
-html[data-batch="prayas2"] .tp-brand-mark { background: linear-gradient(135deg, var(--p2-c), var(--p2-a)); color: #4a3a08; }
+html[data-batch="prayas2"] .tp-brand-mark { background: linear-gradient(135deg, var(--p2-c), var(--p2-a)); color: #0b332e; }
 
 .tp-brand-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
 .tp-brand-sub { display: block; font-family: var(--font-hand); font-weight: 700; font-size: 13px; color: var(--muted); margin-top: 1px; }
@@ -333,8 +333,8 @@ html[data-batch="prayas2"] .tp-brand-mark { background: linear-gradient(135deg, 
   display: inline-flex; align-items: center; gap: 5px;
   border: 1.5px solid transparent;
 }
-.tp-badge.track-main { color: var(--p2-a); background: rgba(201,154,46,0.14); border-color: rgba(201,154,46,0.4); }
-.tp-badge.track-advanced { color: var(--p1-a); background: rgba(95,143,214,0.14); border-color: rgba(95,143,214,0.4); }
+.tp-badge.track-main { color: var(--p2-a); background: rgba(31,143,128,0.16); border-color: rgba(31,143,128,0.45); }
+.tp-badge.track-advanced { color: var(--p1-a); background: rgba(95,143,214,0.16); border-color: rgba(95,143,214,0.45); }
 .tp-badge.type-full { color: var(--gold-light); background: rgba(255,200,87,0.14); border-color: rgba(255,200,87,0.4); }
 .tp-badge.type-part { color: var(--muted); background: var(--card); border-color: var(--border-hi); }
 
@@ -412,7 +412,7 @@ section { padding: 32px 0; }
 }
 .tp-cal-cell.is-selected:hover { transform: scale(1.13) rotate(-2deg); }
 .tp-cal-cell.is-selected.track-main { background: linear-gradient(135deg, var(--p2-c), var(--p2-a)); }
-.tp-cal-cell.is-selected.track-main .tp-cal-daynum { color: #4a3a08; }
+.tp-cal-cell.is-selected.track-main .tp-cal-daynum { color: #0b332e; }
 .tp-cal-cell.is-selected.track-advanced { background: linear-gradient(135deg, var(--p1-c), var(--p1-a)); }
 .tp-cal-cell.is-selected.track-advanced .tp-cal-daynum { color: #0d2a4a; }
 .tp-cal-daynum { font-size: 13px; font-weight: 800; line-height: 1; }
