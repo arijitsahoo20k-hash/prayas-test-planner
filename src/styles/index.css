@@ -416,8 +416,10 @@ section { padding: 32px 0; }
 .tp-cal-cell.is-selected.track-advanced { background: linear-gradient(135deg, var(--p1-c), var(--p1-a)); }
 .tp-cal-cell.is-selected.track-advanced .tp-cal-daynum { color: #0d2a4a; }
 .tp-cal-daynum { font-size: 13px; font-weight: 800; line-height: 1; }
-.tp-cal-dot { width: 5px; height: 5px; border-radius: 999px; display: inline-block; }
-.tp-cal-cell.is-selected .tp-cal-dot { background: rgba(0,0,0,0.5) !important; }
+.tp-cal-dot { width: 7px; height: 7px; border-radius: 999px; display: inline-block; box-shadow: 0 0 0 1.5px var(--card-hi); }
+.tp-cal-dot.is-full { box-shadow: 0 0 0 1.5px var(--card-hi), 0 0 0 3px var(--gold); }
+.tp-cal-cell.is-selected .tp-cal-dot { background: rgba(0,0,0,0.55) !important; box-shadow: 0 0 0 1.5px rgba(255,255,255,0.6); }
+.tp-cal-cell.is-selected .tp-cal-dot.is-full { box-shadow: 0 0 0 1.5px rgba(255,255,255,0.6), 0 0 0 3px var(--gold-deep); }
 .tp-cal-cell.has-test.type-full:not(.is-selected) { border-color: rgba(209,150,43,0.75); }
 
 .tp-cal-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding-top: 14px; margin-top: 4px; border-top: 1px dashed var(--border-hi); }
