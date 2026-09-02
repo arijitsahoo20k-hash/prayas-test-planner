@@ -8,21 +8,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&family=Caveat:wght@600;700&display=swap');
 
 :root {
-  --bg: #2b2620;
-  --bg2: #332d26;
-  --card: #3c342c;
-  --card-hi: #463d33;
-  --card-hi2: #50453a;
-  --border: rgba(242,230,207,0.10);
-  --border-hi: rgba(242,230,207,0.18);
-  --ink: #f1ece3;
-  --muted: #b8ac9c;
-  --muted-dim: #8c7d6a;
+  --bg: #f4ecdb;
+  --bg2: #eee2c9;
+  --card: #fffbf1;
+  --card-hi: #fff5e4;
+  --card-hi2: #ffefd4;
+  --border: rgba(43,33,24,0.08);
+  --border-hi: rgba(43,33,24,0.15);
+  --ink: #2b2118;
+  --muted: #7a6a53;
+  --muted-dim: #9c8c72;
 
   /* sticker outline + paper-dot texture */
-  --outline: #f2e6cf;
-  --outline-soft: rgba(242,230,207,0.35);
-  --dot: rgba(242,230,207,0.05);
+  --outline: #2b2118;
+  --outline-soft: rgba(43,33,24,0.32);
+  --dot: rgba(43,33,24,0.05);
 
   /* Prayas 1.0 palette — Sky Whisper */
   --p1-a: #93c5fd;
@@ -54,7 +54,7 @@
   --radius-card-sm: 16px;
   --radius-pill: 999px;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* batch-specific accent vars — toggled by JS on <html> */
@@ -81,8 +81,11 @@ body {
   font-family: var(--font-body); color: var(--ink); background: var(--bg);
   position: relative; overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
-  background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
+  background-image:
+    radial-gradient(var(--dot) 1.5px, transparent 1.5px),
+    linear-gradient(180deg, var(--bg2) 0%, var(--bg) 480px);
+  background-size: 22px 22px, 100% 100%;
+  background-repeat: repeat, no-repeat;
 }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 800; margin: 0 0 8px; letter-spacing: -0.02em; }
 p { margin: 0; line-height: 1.6; }
@@ -96,22 +99,22 @@ button { font-family: inherit; }
 .glow-mesh {
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(900px 600px at 5% 0%, rgba(255,111,94,0.06), transparent 55%),
-    radial-gradient(800px 700px at 95% 10%, rgba(255,200,87,0.05), transparent 55%),
-    radial-gradient(1000px 600px at 50% 110%, rgba(255,111,94,0.04), transparent 60%);
+    radial-gradient(900px 600px at 8% -6%, rgba(255,111,94,0.035), transparent 60%),
+    radial-gradient(800px 700px at 96% 4%, rgba(255,200,87,0.03), transparent 60%),
+    radial-gradient(1100px 650px at 50% 112%, rgba(255,111,94,0.025), transparent 65%);
   transition: background 0.5s ease;
 }
 html[data-batch="prayas1"] .glow-mesh {
   background:
-    radial-gradient(900px 600px at 5% 0%, rgba(147,197,253,0.09), transparent 55%),
-    radial-gradient(800px 700px at 95% 10%, rgba(106,157,224,0.06), transparent 55%),
-    radial-gradient(1000px 600px at 50% 110%, rgba(203,227,255,0.05), transparent 60%);
+    radial-gradient(900px 600px at 8% -6%, rgba(147,197,253,0.05), transparent 60%),
+    radial-gradient(800px 700px at 96% 4%, rgba(106,157,224,0.035), transparent 60%),
+    radial-gradient(1100px 650px at 50% 112%, rgba(203,227,255,0.03), transparent 65%);
 }
 html[data-batch="prayas2"] .glow-mesh {
   background:
-    radial-gradient(900px 600px at 5% 0%, rgba(253,230,138,0.08), transparent 55%),
-    radial-gradient(800px 700px at 95% 10%, rgba(217,185,94,0.06), transparent 55%),
-    radial-gradient(1000px 600px at 50% 110%, rgba(254,243,194,0.05), transparent 60%);
+    radial-gradient(900px 600px at 8% -6%, rgba(253,230,138,0.045), transparent 60%),
+    radial-gradient(800px 700px at 96% 4%, rgba(217,185,94,0.035), transparent 60%),
+    radial-gradient(1100px 650px at 50% 112%, rgba(254,243,194,0.03), transparent 65%);
 }
 
 /* ─── floating decor sprinkles ─── */
@@ -132,8 +135,11 @@ html[data-batch="prayas2"] .glow-mesh {
   position: fixed; inset: 0; z-index: 200;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: var(--bg);
-  background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
+  background-image:
+    radial-gradient(var(--dot) 1.5px, transparent 1.5px),
+    linear-gradient(180deg, var(--bg2) 0%, var(--bg) 480px);
+  background-size: 22px 22px, 100% 100%;
+  background-repeat: repeat, no-repeat;
   padding: 24px;
 }
 .bs-header {
