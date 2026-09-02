@@ -116,26 +116,26 @@ html[data-batch="prayas2"] .glow-mesh {
     radial-gradient(800px 700px at 96% 4%, rgba(217,185,94,0.035), transparent 60%),
     radial-gradient(1100px 650px at 50% 112%, rgba(254,243,194,0.03), transparent 65%);
 }
+/* grain noise folded in as a pseudo-element of glow-mesh instead of its own
+   fixed full-page <div> — one fewer permanently-composited layer for the
+   browser to track on every scroll/resize. */
+.glow-mesh::after {
+  content: ""; position: absolute; inset: 0; opacity: .02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* ─── floating decor sprinkles ─── */
+/* ─── floating decor sprinkles ───
+   was: `animation: tp-bob 7s ease-in-out infinite` on every .decor element,
+   forever, for the entire life of the page. Even at transform-only cost,
+   an animation that NEVER stops means the compositor is doing work on
+   every single frame the tab is open — that's the actual 80% GPU sink,
+   not any one-off paint cost. Sparkles now sit still; still visible,
+   zero ongoing compositor work. */
 .decor-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
 .decor {
-  position: absolute; opacity: .5; animation: tp-bob 7s ease-in-out infinite;
+  position: absolute; opacity: .5;
   color: var(--accent, var(--gold));
-  /* was: filter: drop-shadow(...) — animated element + filter forces a costly
-     per-frame raster on the GPU. Dropped; text-shadow is compositor-cheap. */
   text-shadow: 0 0 6px rgba(0,0,0,0.4);
-  will-change: transform;
-}
-@keyframes tp-bob { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(8deg); } }
-.grain {
-  /* was: position:fixed + mix-blend-mode:overlay + live feTurbulence filter.
-     A full-viewport blend layer sitting under animating elements forces the
-     browser to re-blend the whole screen every frame — this was the main
-     80%-GPU culprit. Static noise, no blend mode, so it paints once and
-     never touches the compositor again. */
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .02;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
