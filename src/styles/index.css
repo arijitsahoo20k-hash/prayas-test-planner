@@ -25,26 +25,26 @@
   --dot: rgba(43,33,24,0.05);
 
   /* Prayas 1.0 palette — Sky Whisper */
-  --p1-a: #93c5fd;
-  --p1-b: #6a9de0;
+  --p1-a: #5f8fd6;
+  --p1-b: #3f6bb0;
   --p1-c: #cbe3ff;
   --p1-glow: rgba(147,197,253,0.16);
 
   /* Prayas 2.0 palette — Butter Pop */
-  --p2-a: #fde68a;
-  --p2-b: #d9b95e;
+  --p2-a: #c99a2e;
+  --p2-b: #a67c1f;
   --p2-c: #fef3c2;
   --p2-glow: rgba(253,230,138,0.16);
 
   /* Subject accent colors */
-  --phy: #f6a6cf;
-  --chem: #5eead4;
-  --math: #c6b6fb;
+  --phy: #cf5a8a;
+  --chem: #2a9d87;
+  --math: #8570d9;
 
   /* Gold for full tests */
-  --gold: #ffc857;
-  --gold-light: #ffd685;
-  --gold-deep: #d99f2f;
+  --gold: #d1962b;
+  --gold-light: #ad7a1e;
+  --gold-deep: #8a5f14;
 
   --font-display: 'Baloo 2', system-ui, sans-serif;
   --font-body: 'Nunito', system-ui, sans-serif;
@@ -190,7 +190,7 @@ html[data-batch="prayas2"] .glow-mesh {
 
 .bs-card-name { font-family: var(--font-display); font-weight: 800; font-size: 22px; }
 .bs-card-p1 .bs-card-name { color: var(--p1-a); }
-.bs-card-p2 .bs-card-name { color: var(--p2-c); }
+.bs-card-p2 .bs-card-name { color: var(--p2-a); }
 
 .bs-card-tagline { font-size: 12.5px; color: var(--muted); font-weight: 600; }
 
@@ -201,7 +201,7 @@ html[data-batch="prayas2"] .glow-mesh {
 }
 .bs-card-stat-num { font-family: var(--font-display); font-weight: 800; font-size: 20px; }
 .bs-card-p1 .bs-card-stat-num { color: var(--p1-a); }
-.bs-card-p2 .bs-card-stat-num { color: var(--p2-c); }
+.bs-card-p2 .bs-card-stat-num { color: var(--p2-a); }
 .bs-card-stat-label { font-size: 9.5px; color: var(--muted-dim); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
 
 .bs-card-cta {
@@ -209,7 +209,7 @@ html[data-batch="prayas2"] .glow-mesh {
   font-size: 12.5px; font-weight: 800;
 }
 .bs-card-p1 .bs-card-cta { color: var(--p1-a); }
-.bs-card-p2 .bs-card-cta { color: var(--p2-c); }
+.bs-card-p2 .bs-card-cta { color: var(--p2-a); }
 
 /* ══════════════════════════════════════════════════════════
    TOPBAR
@@ -333,8 +333,8 @@ html[data-batch="prayas2"] .tp-brand-mark { background: linear-gradient(135deg, 
   display: inline-flex; align-items: center; gap: 5px;
   border: 1.5px solid transparent;
 }
-.tp-badge.track-main { color: var(--p2-c); background: rgba(253,230,138,0.14); border-color: rgba(253,230,138,0.4); }
-.tp-badge.track-advanced { color: var(--p1-a); background: rgba(147,197,253,0.14); border-color: rgba(147,197,253,0.4); }
+.tp-badge.track-main { color: var(--p2-a); background: rgba(201,154,46,0.14); border-color: rgba(201,154,46,0.4); }
+.tp-badge.track-advanced { color: var(--p1-a); background: rgba(95,143,214,0.14); border-color: rgba(95,143,214,0.4); }
 .tp-badge.type-full { color: var(--gold-light); background: rgba(255,200,87,0.14); border-color: rgba(255,200,87,0.4); }
 .tp-badge.type-part { color: var(--muted); background: var(--card); border-color: var(--border-hi); }
 
